@@ -15,3 +15,7 @@ One important hint: If you are on CentOS 7, you must change the firewall zone pu
 Otherwise you can't connect to the Collabora container. Set the subnet with your docker container network subnet. 
 
 You will find the public.xml source file in the repository.
+
+# Extra configuration
+
++ [https://saxonydevops.com/2020/09/30/nextcloud-and-collabora-on-docker](https://saxonydevops.com/2020/09/30/nextcloud-and-collabora-on-docker/)

@@ -8,6 +8,7 @@ services:
       - nginx-proxy-certs:/etc/nginx/certs:ro
       - nginx-proxy-vhost:/etc/nginx/vhost.d
       - /opt/docker-files/nginx-proxy/network_internal.conf:/etc/nginx/network_internal.conf
+      - /opt/docker-files/nginx-proxy/uploadsize.conf:/etc/nginx/conf.d/uploadsize.conf
       - /usr/share/nginx/html
       - /var/run/docker.sock:/tmp/docker.sock:ro
     ports:

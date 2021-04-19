@@ -30,12 +30,12 @@ services:
       cloud-network:
 
   ncdb:
-    image: mariadb:10.5.4
+    image: mariadb:latest
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=qLwsPX9g4vQq
-      - MYSQL_DATABASE=nextcloud
-      - MYSQL_USER=ncuser
+      - MYSQL_DATABASE=nextcloud_db
+      - MYSQL_USER=nextcloud_db_user
       - MYSQL_PASSWORD=B7JtnBvv6rSg6Dug
     volumes:
       - ncdb-data:/var/lib/mysql
@@ -43,7 +43,7 @@ services:
       cloud-network:
 
   nc:
-    image: nextcloud:19.0.1-apache
+    image: nextcloud:latest
     restart: always
     depends_on:
       - ncdb
@@ -67,7 +67,7 @@ services:
       cloud-network:
           
   office:
-    image: collabora/code:4.2.6.2
+    image: collabora/code:latest
     restart: always
     environment:
       - "domain=cloud\\.admin-schule\\.de"

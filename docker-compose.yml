@@ -33,10 +33,10 @@ services:
     image: mariadb:latest
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=qLwsPX9g4vQq
+      - MYSQL_ROOT_PASSWORD=
       - MYSQL_DATABASE=nextcloud_db
       - MYSQL_USER=nextcloud_db_user
-      - MYSQL_PASSWORD=B7JtnBvv6rSg6Dug
+      - MYSQL_PASSWORD=
     volumes:
       - ncdb-data:/var/lib/mysql
     networks:
@@ -53,15 +53,15 @@ services:
       - nc-config:/var/www/html/config
       - nc-data:/var/www/html/data
     environment:
-      - MYSQL_DATABASE=nextcloud
-      - MYSQL_USER=ncuser
-      - MYSQL_PASSWORD=B7JtnBvv6rSg6Dug
+      - MYSQL_DATABASE=nextcloud_db
+      - MYSQL_USER=nextcloud_db_user
+      - MYSQL_PASSWORD=
       - MYSQL_HOST=ncdb
-      - VIRTUAL_HOST=cloud.admin-schule.de
+      - VIRTUAL_HOST=lxcloud.derchef.site
       - VIRTUAL_PORT=80
       - VIRTUAL_PROTO=http
-      - LETSENCRYPT_HOST=cloud.admin-schule.de
-      - LETSENCRYPT_EMAIL=info@admin-schule.de
+      - LETSENCRYPT_HOST=lxcloud.derchef.site
+      - LETSENCRYPT_EMAIL=mjindra@derchef.email
       - RESOLVE_TO_PROXY_IP=true
     networks:
       cloud-network:
@@ -70,15 +70,15 @@ services:
     image: collabora/code:latest
     restart: always
     environment:
-      - "domain=cloud\\.admin-schule\\.de"
-      - "username=admin"
+      - "domain=lxcloud\\.derchef\\.site"
+      - "username=derchef"
       - "password="
       - "SLEEPFORDEBUGGER=0"
-      - VIRTUAL_HOST=office.admin-schule.de
+      - VIRTUAL_HOST=docs.derchef.site
       - VIRTUAL_PORT=9980
       - VIRTUAL_PROTO=https
-      - LETSENCRYPT_HOST=office.admin-schule.de
-      - LETSENCRYPT_EMAIL=info@admin-schule.de
+      - LETSENCRYPT_HOST=docs.derchef.site
+      - LETSENCRYPT_EMAIL=mjindra@derchef.email
       - RESOLVE_TO_PROXY_IP=true
       - NETWORK_ACCESS=internal
     expose:

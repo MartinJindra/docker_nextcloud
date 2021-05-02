@@ -19,3 +19,4 @@ You will find the public.xml source file in the repository.
 # Extra configuration
 
 + [https://saxonydevops.com/2020/09/30/nextcloud-and-collabora-on-docker](https://saxonydevops.com/2020/09/30/nextcloud-and-collabora-on-docker/)
++ [redis und collabora](https://github.com/SnowMB/nextcloud)

@@ -2,7 +2,7 @@ version: '2.1'
 services:
 
   nginx-proxy:
-    image: jwilder/nginx-proxy
+    image: jwilder/nginx-proxy:latest
     restart: always
     volumes:
       - nginx-proxy-certs:/etc/nginx/certs:ro
@@ -20,7 +20,7 @@ services:
       cloud-network:
 
   nginx-letsencrypt:
-    image: jrcs/letsencrypt-nginx-proxy-companion      
+    image: jrcs/letsencrypt-nginx-proxy-companion:latest
     restart: always
     volumes:
       - nginx-proxy-certs:/etc/nginx/certs:rw

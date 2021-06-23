@@ -34,10 +34,10 @@ services:
     image: mariadb:latest
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_ROOT_PASSWORD=TODO
       - MYSQL_DATABASE=nextcloud_db
       - MYSQL_USER=nextcloud_db_user
-      - MYSQL_PASSWORD=
+      - MYSQL_PASSWORD=TODO
     volumes:
       - ncdb-data:/var/lib/mysql
     networks:
@@ -46,7 +46,7 @@ services:
   ncredis:
     image: redis:latest
     restart: always
-    command: redis-server --requirepass 
+    command: redis-server --requirepass TODO
     networks:
       cloud-network:
 
@@ -65,16 +65,16 @@ services:
     environment:
       - MYSQL_DATABASE=nextcloud_db
       - MYSQL_USER=nextcloud_db_user
-      - MYSQL_PASSWORD=
+      - MYSQL_PASSWORD=TODO
       - MYSQL_HOST=ncdb
-      - VIRTUAL_HOST=lxcloud.derchef.site
+      - VIRTUAL_HOST=cloud.example.com
       - VIRTUAL_PORT=80
       - VIRTUAL_PROTO=http
-      - LETSENCRYPT_HOST=lxcloud.derchef.site
+      - LETSENCRYPT_HOST=cloud.example.com
       - LETSENCRYPT_EMAIL=mjindra@derchef.email
       - RESOLVE_TO_PROXY_IP=true
       - REDIS_HOST=ncredis
-      - REDIS_HOST_PASSWORD=
+      - REDIS_HOST_PASSWORD=TODO
     networks:
       cloud-network:
           
@@ -82,15 +82,15 @@ services:
     image: collabora/code:latest
     restart: always
     environment:
-      - "domain=lxcloud\\.derchef\\.site"
-      - "username="
-      - "password="
+      - "domain=example\\.com"
+      - "username=TODO"
+      - "password=TODO"
       - "SLEEPFORDEBUGGER=0"
-      - VIRTUAL_HOST=docs.derchef.site
+      - VIRTUAL_HOST=docs.example.com
       - VIRTUAL_PORT=9980
       - VIRTUAL_PROTO=https
-      - LETSENCRYPT_HOST=docs.derchef.site
-      - LETSENCRYPT_EMAIL=mjindra@derchef.email
+      - LETSENCRYPT_HOST=docs.example.com
+      - LETSENCRYPT_EMAIL=TODO
       - RESOLVE_TO_PROXY_IP=true
       - NETWORK_ACCESS=internal
     expose:

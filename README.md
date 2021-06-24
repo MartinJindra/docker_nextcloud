@@ -8,7 +8,9 @@ All in one docker-compose file with nginx reverse proxy and Letsencrypt certific
 This installation process was tested on an Ubuntu 20.04 server.
 
 Install `docker` and `docker-compose` via a packet manager or other methods.
-For ease of instructions a package manager like `apt` will be used but if you want more update to date versions go to [docker website](https://docs.docker.com/compose/install/). Also all commands are executed as root.
+For ease of instructions a package manager like `apt` will be used but if you want more update to date versions go to [docker website](https://docs.docker.com/compose/install/). 
+
+**Also all commands are executed as root.**
 
 ```bash
 apt install docker docker-compose git

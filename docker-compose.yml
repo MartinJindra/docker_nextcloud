@@ -31,7 +31,7 @@ services:
       cloud-network:
 
   ncdb:
-    image: mariadb:latest
+    image: mariadb:10.5
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=TODO
@@ -51,12 +51,12 @@ services:
       cloud-network:
 
   nc:
-    image: nextcloud:latest
+    image: nextcloud:stable
     restart: always
     depends_on:
       - ncdb
+      - ncoffice 
       - ncredis
-      - office
     volumes:
       - nc-nextcloud:/var/www/html
       - nc-apps:/var/www/html/custom_apps
@@ -67,30 +67,30 @@ services:
       - MYSQL_USER=nextcloud_db_user
       - MYSQL_PASSWORD=TODO
       - MYSQL_HOST=ncdb
-      - VIRTUAL_HOST=cloud.example.com
+      - VIRTUAL_HOST=lxcloud.derchef.site
       - VIRTUAL_PORT=80
       - VIRTUAL_PROTO=http
-      - LETSENCRYPT_HOST=cloud.example.com
+      - LETSENCRYPT_HOST=lxcloud.derchef.site
       - LETSENCRYPT_EMAIL=mjindra@derchef.email
       - RESOLVE_TO_PROXY_IP=true
       - REDIS_HOST=ncredis
       - REDIS_HOST_PASSWORD=TODO
     networks:
       cloud-network:
-          
-  office:
+              
+  ncoffice:
     image: collabora/code:latest
     restart: always
     environment:
-      - "domain=example\\.com"
-      - "username=TODO"
+      - "domain=lxcloud\\.derchef\\.site"
+      - "username=derchef"
       - "password=TODO"
       - "SLEEPFORDEBUGGER=0"
-      - VIRTUAL_HOST=docs.example.com
+      - VIRTUAL_HOST=docs.derchef.site
       - VIRTUAL_PORT=9980
       - VIRTUAL_PROTO=https
-      - LETSENCRYPT_HOST=docs.example.com
-      - LETSENCRYPT_EMAIL=TODO
+      - LETSENCRYPT_HOST=docs.derchef.site
+      - LETSENCRYPT_EMAIL=mjindra@derchef.email
       - RESOLVE_TO_PROXY_IP=true
       - NETWORK_ACCESS=internal
     expose:
@@ -98,7 +98,7 @@ services:
     cap_add:
       - MKNOD
     networks:
-      cloud-network:    
+      cloud-network:
 
 networks:
   cloud-network:

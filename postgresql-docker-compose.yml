@@ -62,10 +62,10 @@ services:
       - nc-config:/var/www/html/config
       - nc-data:/var/www/html/data
     environment:
-      - MYSQL_DATABASE=nextcloud_db
-      - MYSQL_USER=nextcloud_db_user
-      - MYSQL_PASSWORD=TODO
-      - MYSQL_HOST=ncdb
+      - POSTGRES_DB=nextcloud_db
+      - POSTGRES_USER=nextcloud_db_user
+      - POSTGRES_PASSWORD=TODO
+      - POSTGRES_HOST=ncdb
       - VIRTUAL_HOST=lxcloud.derchef.site
       - VIRTUAL_PORT=80
       - VIRTUAL_PROTO=http

@@ -2,7 +2,7 @@ version: '2.1'
 services:
 
   nginx-proxy:
-    image: jwilder/nginx-proxy:latest
+    image: jwilder/nginx-proxy:0.9.1
     restart: always
     volumes:
       - nginx-proxy-certs:/etc/nginx/certs:ro
@@ -20,7 +20,7 @@ services:
       cloud-network:
 
   nginx-letsencrypt:
-    image: jrcs/letsencrypt-nginx-proxy-companion:latest
+    image: jrcs/letsencrypt-nginx-proxy-companion:2.1
     restart: always
     volumes:
       - nginx-proxy-certs:/etc/nginx/certs:rw
@@ -44,7 +44,7 @@ services:
       cloud-network:
 
   ncredis:
-    image: redis:latest
+    image: redis:6.0-buster
     restart: always
     command: redis-server --requirepass TODO
     networks:
@@ -79,7 +79,7 @@ services:
       cloud-network:
               
   ncoffice:
-    image: collabora/code:latest
+    image: collabora/code:6.4.9.2
     restart: always
     environment:
       - "domain=lxcloud\\.derchef\\.site"

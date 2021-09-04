@@ -47,6 +47,8 @@ services:
     image: redis:6.2.5
     restart: always
     command: redis-server --requirepass TODO
+    volumes:
+      - redis:/var/lib/redis
     networks:
       cloud-network:
 
@@ -107,6 +109,7 @@ networks:
 volumes:
   nginx-proxy-certs:
   nginx-proxy-vhost:
+  redis:
   ncdb-data:
   nc-nextcloud:
   nc-apps:

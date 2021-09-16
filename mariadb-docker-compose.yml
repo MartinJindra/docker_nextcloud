@@ -2,31 +2,28 @@ version: '2.1'
 services:
 
   nginx-proxy:
-    image: jwilder/nginx-proxy:0.9.2
-    restart: always
-    volumes:
-      - nginx-proxy-certs:/etc/nginx/certs:ro
-      - nginx-proxy-vhost:/etc/nginx/vhost.d
-      - /opt/docker-files/nginx-proxy/network_internal.conf:/etc/nginx/network_internal.conf
-      - /opt/docker-files/nginx-proxy/uploadsize.conf:/etc/nginx/conf.d/uploadsize.conf
-      - /usr/share/nginx/html
-      - /var/run/docker.sock:/tmp/docker.sock:ro
+    image: nginxproxy/nginx-proxy
     ports:
-      - 80:80
-      - 443:443
-    labels:
-      - "com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy"
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /opt/docker-files/nginx-proxy/uploadsize.conf:/etc/nginx/conf.d/uploadsize.conf
+      - certs:/etc/nginx/certs 
+      - vhost:/etc/nginx/vhost.d 
+      - html:/usr/share/nginx/html 
+      - /var/run/docker.sock:/tmp/docker.sock:ro
     networks:
       cloud-network:
 
-  nginx-letsencrypt:
-    image: jrcs/letsencrypt-nginx-proxy-companion:2.1
-    restart: always
-    volumes:
-      - nginx-proxy-certs:/etc/nginx/certs:rw
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+  nginx-proxy-acme:
+    image: nginxproxy/acme-companion
     volumes_from:
       - nginx-proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - acme:/etc/acme.sh
+    environment:
+      - DEFAULT_EMAIL=mjindra@derchef.email
     networks:
       cloud-network:
 
@@ -107,8 +104,10 @@ networks:
     driver: bridge
           
 volumes:
-  nginx-proxy-certs:
-  nginx-proxy-vhost:
+  certs: 
+  vhost:
+  html:
+  acme:
   redis:
   ncdb-data:
   nc-nextcloud:

@@ -32,20 +32,21 @@ services:
     networks:
       cloud-network:
 
-  ncdb:
+  nc-db:
     image: mariadb:10.6.4
     restart: always
+    mem_limit: 128M
     environment:
       - MYSQL_ROOT_PASSWORD=TODO
       - MYSQL_DATABASE=nextcloud_db
       - MYSQL_USER=nextcloud_db_user
       - MYSQL_PASSWORD=TODO
     volumes:
-      - ncdb-data:/var/lib/mysql
+      - nc-db-data:/var/lib/mysql
     networks:
       cloud-network:
 
-  ncredis:
+  nc-redis:
     image: redis:6.2.6
     restart: always
     mem_limit: 50M
@@ -60,11 +61,11 @@ services:
     restart: always
     mem_limit: 700M
     depends_on:
-      - ncdb
-      - ncoffice 
-      - ncredis
+      - nc-db
+      - nc-collabora
+      - nc-redis
       - nginx-proxy
-      - nginx-letsencrypt 
+      - nginx-letsencrypt
     volumes:
       - nc-nextcloud:/var/www/html
       - nc-apps:/var/www/html/custom_apps
@@ -86,7 +87,7 @@ services:
     networks:
       cloud-network:
               
-  collabora:
+  nc-collabora:
     image: collabora/code:6.4.13.2
     restart: always
     mem_limit: 850M
@@ -117,7 +118,7 @@ volumes:
   nginx-proxy-certs:
   nginx-proxy-vhost:
   redis:
-  ncdb-data:
+  nc-db-data:
   nc-nextcloud:
   nc-apps:
   nc-config:

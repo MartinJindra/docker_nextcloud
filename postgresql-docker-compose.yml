@@ -3,7 +3,6 @@ services:
 
   nginx-proxy:
     image: jwilder/nginx-proxy:latest
-    restart: unless-stopped
     mem_limit: 50M
     volumes:
       - nginx-proxy-certs:/etc/nginx/certs:ro
@@ -22,7 +21,6 @@ services:
 
   nginx-letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion:latest
-    restart: unless-stopped
     mem_limit: 20M
     volumes:
       - nginx-proxy-certs:/etc/nginx/certs:rw

@@ -29,7 +29,7 @@ Pull the docker images.
 docker-compose pull
 ```
 
-Edit the [docker-compose.yml](docker-compose.yml) file. Replace any TODO with secure and strong passwords and replace any links or domains with your own. 
+Edit the [.env](.env) file. Replace any TODO with secure and strong passwords and replace any links or domains with your own. 
 
 Initialize some configuration files for the nginx-reverse proxy with [init.sh](init.sh). This is important so that larger files can be uploaded.
 

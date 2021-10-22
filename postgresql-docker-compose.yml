@@ -2,7 +2,7 @@ version: '2.1'
 services:
 
   nginx-proxy:
-    image: jwilder/nginx-proxy:latest
+    image: nginxproxy/nginx-proxy
     mem_limit: 50M
     volumes:
       - nginx-proxy-certs:/etc/nginx/certs:ro
@@ -20,7 +20,7 @@ services:
       cloud-network:
 
   nginx-letsencrypt:
-    image: jrcs/letsencrypt-nginx-proxy-companion:latest
+    image: nginxproxy/acme-companion
     mem_limit: 20M
     volumes:
       - nginx-proxy-certs:/etc/nginx/certs:rw

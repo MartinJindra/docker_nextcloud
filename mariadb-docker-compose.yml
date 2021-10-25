@@ -73,14 +73,14 @@ services:
       - "MYSQL_DATABASE=${MYSQL_DATABASE}"
       - "MYSQL_USER=${MYSQL_USER}"
       - "MYSQL_PASSWORD=${MYSQL_PASSWORD}"
-      - MYSQL_HOST=ncdb
+      - MYSQL_HOST=nc-db
       - "VIRTUAL_HOST=${VIRTUAL_HOST}"
       - VIRTUAL_PORT=80
       - VIRTUAL_PROTO=http
       - "LETSENCRYPT_HOST=${LETSENCRYPT_HOST}"
       - "LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL}"
       - RESOLVE_TO_PROXY_IP=true
-      - REDIS_HOST=ncredis
+      - REDIS_HOST=nc-redis
       - "REDIS_HOST_PASSWORD=${REDIS_PASSWORD}"
     networks:
       cloud-network:

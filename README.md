@@ -10,37 +10,52 @@ This installation process was tested on an Ubuntu 20.04 server.
 Install `docker` and `docker-compose` via a packet manager or other methods.
 For ease of instructions a package manager like `apt` will be used but if you want more update to date versions go to [docker website](https://docs.docker.com/compose/install/). 
 
-**Also all commands are executed as root.**
+**Many commands need root privileges.**
 
-```bash
-apt install docker docker-compose git
 ```
+[user@server ~]$ sudo apt install docker docker-compose git
+```
+
+Add your user to the `docker` group.
+
+```
+[user@server ~]$ sudo usermod $USER -aG docker
+```
+
+For this to take affect, you need to log out and log back in.
+
+```
+[user@server ~]$ exit
+[user@local ~]$ ssh user@server
+```
+
+## Configuration
 
 Clone the repository with git and change into it.
 
-```bash
-git clone https://github.com/MartinJindra/docker_nextcloud 
-cd docker_nextcloud
+```
+[user@server ~]$ git clone https://github.com/MartinJindra/docker_nextcloud 
+[user@server ~]$ cd docker_nextcloud
 ```
 
 Pull the docker images.
 
-```bash
-docker-compose pull
+```
+[user@server ~/docker_nextcloud]$ docker-compose pull
 ```
 
 Edit the [.env](.env) file. Replace any TODO with secure and strong passwords and replace any links or domains with your own. 
 
 Initialize some configuration files for the nginx-reverse proxy with [init.sh](init.sh). This is important so that larger files can be uploaded.
 
-```bash
-bash init.sh
+```
+[user@server ~/docker_nextcloud]$ sudo bash init.sh
 ```
 
 And finally start it with `docker-compose`. 
 
-```bash
-docker-compose up -d
+```
+[user@server ~/docker_nextcloud]$ docker-compose up -d
 ```
 
 Now is the hardest part. WAITING.
@@ -52,8 +67,8 @@ When you think that everything is done visit your Nextcloud instance and start t
 
 Normal updates with Docker are not to difficult but to make it even simpler execute [update_images.sh](update_images.sh).
 
-```bash
-bash update_images.sh
+```
+[user@server ~/docker_nextcloud]$ bash update_images.sh
 ```
 
 ## Links that could be useful

@@ -38,7 +38,7 @@ Clone the repository with git and change into it.
 [user@server ~]$ cd docker_nextcloud
 ```
 
-Edit the [.env](.env) file. Replace any TODO with secure and strong passwords and replace any links or domains with your own. 
+Edit the [.env](.env) file. Replace any `TODO` with secure and strong passwords and replace any links or domains with your own.
 
 And finally start it with `docker-compose`.
 

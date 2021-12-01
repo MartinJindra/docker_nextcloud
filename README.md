@@ -51,14 +51,6 @@ The setup and start process of the Docker containers can take a while because a 
 
 When you think that everything is done visit your Nextcloud instance and start the setup process for Nextcloud.
 
-## Updating the containers
-
-Normal updates with Docker are not to difficult but to make it even simpler execute [update_images.sh](update_images.sh).
-
-```
-[user@server ~/docker_nextcloud]$ bash update_images.sh
-```
-
 ## Links that could be useful
 
 + [https://saxonydevops.com/2020/09/30/nextcloud-and-collabora-on-docker](https://saxonydevops.com/2020/09/30/nextcloud-and-collabora-on-docker/)

@@ -7,8 +7,8 @@ services:
     volumes:
       - nginx-proxy-certs:/etc/nginx/certs:ro
       - nginx-proxy-vhost:/etc/nginx/vhost.d
-      - /opt/docker-files/nginx-proxy/network_internal.conf:/etc/nginx/network_internal.conf
-      - /opt/docker-files/nginx-proxy/uploadsize.conf:/etc/nginx/conf.d/uploadsize.conf
+      - ./nginx_config/network_internal.conf:/etc/nginx/network_internal.conf
+      - ./nginx_config/uploadsize.conf:/etc/nginx/conf.d/uploadsize.conf
       - /usr/share/nginx/html
       - /var/run/docker.sock:/tmp/docker.sock:ro
     ports:
@@ -84,7 +84,7 @@ services:
       - "REDIS_HOST_PASSWORD=${REDIS_PASSWORD}"
     networks:
       cloud-network:
-              
+
   nc-collabora:
     image: "collabora/code:${COLLABORA_VERSION}"
     restart: always
@@ -111,7 +111,7 @@ services:
 networks:
   cloud-network:
     driver: bridge
-          
+
 volumes:
   nginx-proxy-certs:
   nginx-proxy-vhost:

@@ -44,10 +44,20 @@ Clone the repository with git and change into it.
 [user@server ~]$ cd docker_nextcloud
 ```
 
-Edit the [.env](.env) file. 
+Copy the `docker-compose.yml` you want in the root of the repository.
+
+```
+[user@server ~/docker_nextcloud]$ cp MariaDB/docker-compose.yml docker-compose.yml
+```
+
+```
+[user@server ~/docker_nextcloud]$ cp PostgreSQL/docker-compose.yml docker-compose.yml
+```
+
+Edit the [.env](.env) file.
 
 1. Replace any `TODO` with secure and strong passwords and any links or domains with your own.
-2. And edit some other options if you need to. For example you should change the variables ending with "MEM_LIMIT". These variables set a memory limit for each container and some machines have more or less RAM so change these accordingly. 
+2. And edit some other options if you need to. For example you should change the variables ending with "MEM_LIMIT". These variables set a memory limit for each container and some machines have more or less RAM so change these accordingly.
 
 And finally start it with `docker-compose`.
 

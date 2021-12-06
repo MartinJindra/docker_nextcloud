@@ -1,6 +1,12 @@
 # Nextcloud on Docker with Collabora
 
-Here are the source files for the installation of Nextcloud on Docker with Collabora.
+Here are the source files for a Nextcloud and Collabora installation with Docker.
+The `docker-compose.yml` files come in two variants.
+
+1. PostgreSQL
+2. MariaDB
+
+So choose wisely with Database you want.
 All in one docker-compose file with nginx reverse proxy and Letsencrypt certificate deployment.
 
 ## Installation

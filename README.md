@@ -76,6 +76,14 @@ The setup and start process of the Docker containers can take a while because a 
 
 When you think that everything is done visit your Nextcloud instance and start the setup process for Nextcloud.
 
+## CREDIT
+
+This repository is a fork from [bohlrich](https://github.com/bohlrich/docker_nextcloud).
+Changes include 
+  1. support for two databases `MariaDB` and `PostgreSQL`
+  2. memory limit for containers 
+  3. more up to date image versions
+
 ## Links that could be useful
 
 + [https://saxonydevops.com/2020/09/30/nextcloud-and-collabora-on-docker](https://saxonydevops.com/2020/09/30/nextcloud-and-collabora-on-docker/)

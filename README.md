@@ -1,25 +1,27 @@
 # Nextcloud on Docker with Collabora
 
-Here are the source files for a Nextcloud and Collabora installation with Docker.
+This repository contains files for a Nextcloud and Collabora installation in Docker.
+All in one docker-compose file with nginx reverse proxy and Letsencrypt certificate deployment.
 The `docker-compose.yml` files come in two variants.
 
 1. PostgreSQL
 2. MariaDB
 
-So choose wisely with Database you want.
-All in one docker-compose file with nginx reverse proxy and Letsencrypt certificate deployment.
+So choose wisely with database is needed.
 
 ## Installation
 
-This installation process was tested on an Ubuntu 20.04 server.
+This installation process was tested on an Ubuntu 20.04 and Debian 11.
 
-Install `docker` and `docker-compose` via a packet manager or other methods.
-For ease of instructions a package manager like `apt` will be used but if you want more update to date versions go to [docker website](https://docs.docker.com/compose/install/).
+Install `docker` and `docker-compose` either via a packet manager or other methods.
+For ease of use a package manager like `apt` will be used. If you want a more update to date version of docker visit the instruction on the [docker website](https://docs.docker.com/compose/install/).
 
 **Many commands need root privileges.**
 
+Install `docker`, `docker-compose` and tools like `git`. 
+
 ```
-[user@server ~]$ sudo apt install docker docker-compose git
+[user@server ~]$ sudo apt update && sudo apt install docker docker-compose git -y
 ```
 
 Add your user to the `docker` group.
@@ -37,7 +39,7 @@ For this to take affect, you need to log out and log back in.
 
 ## Configuration
 
-Clone the repository with git and change into it.
+Clone the repository with `git` and change into it.
 
 ```
 [user@server ~]$ git clone https://github.com/MartinJindra/docker_nextcloud
@@ -46,9 +48,13 @@ Clone the repository with git and change into it.
 
 Copy the `docker-compose.yml` you want in the root of the repository.
 
+**MariaDB**
+
 ```
 [user@server ~/docker_nextcloud]$ cp MariaDB/docker-compose.yml docker-compose.yml
 ```
+
+**PostgreSQL**
 
 ```
 [user@server ~/docker_nextcloud]$ cp PostgreSQL/docker-compose.yml docker-compose.yml
@@ -57,7 +63,7 @@ Copy the `docker-compose.yml` you want in the root of the repository.
 Edit the [.env](.env) file.
 
 1. Replace any `TODO` with secure and strong passwords and any links or domains with your own.
-2. And edit some other options if you need to. For example you should change the variables ending with "MEM_LIMIT". These variables set a memory limit for each container and some machines have more or less RAM so change these accordingly.
+2. If you need to also edit some other options. For example you should change the variables ending with "MEM_LIMIT". These variables set a memory limit for each container and some machines have more or less RAM so change these accordingly.
 
 And finally start it with `docker-compose`.
 
@@ -66,7 +72,7 @@ And finally start it with `docker-compose`.
 ```
 
 Now is the hardest part. WAITING.
-The setup and start process of the Docker containers can take a while because a lot of stuff is taken care of by Docker like Let's Encrypt certificates.
+The setup and start process of the Docker containers can take a while because a lot of stuff is taken care of by Docker like setting up the Let's Encrypt certificates.
 
 When you think that everything is done visit your Nextcloud instance and start the setup process for Nextcloud.
 

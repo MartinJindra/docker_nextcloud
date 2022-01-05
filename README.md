@@ -78,7 +78,9 @@ When you think that everything is done visit your Nextcloud instance and start t
 
 ## HTML website
 
-If you want to serve a static HTML website from your server copy your HTML (and JS) files into [html_server/html](html_server/html).
+If you want to serve a static HTML website from your server copy your .html (and .js) files into [html_server/html](html_server/html).
+
+In [.env](.env) edit the `html_domain` variable with your domain for the website.
 
 Then when you execute
 
@@ -86,9 +88,9 @@ Then when you execute
 docker-compose up -d
 ```
 
-it will bild a custom nginx server with your website.
+it will build a custom nginx container with your website.
 
-If you want to update your website with a new website, remove all old files from [html_server/html](html_server/html) and rebuild the container with
+If you want to update your website, replace all not needed files from [html_server/html](html_server/html) and rebuild the container with
 
 ```
 docker-compose up -d --build

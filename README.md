@@ -1,6 +1,6 @@
-# Nextcloud on Docker with Collabora
+# Docker Nextcloud with Collabora and an HTML server
 
-This repository contains files for a Nextcloud and Collabora installation in Docker.
+This repository contains files for a Nextcloud, Collabora and an HTML Server installation in Docker.
 All in one docker-compose file with nginx reverse proxy and Letsencrypt certificate deployment.
 The `docker-compose.yml` files come in two variants.
 
@@ -18,7 +18,7 @@ For ease of use a package manager like `apt` will be used. If you want a more up
 
 **Many commands need root privileges.**
 
-Install `docker`, `docker-compose` and tools like `git`. 
+Install `docker`, `docker-compose` and tools like `git`.
 
 ```
 [user@server ~]$ sudo apt update && sudo apt install docker docker-compose git -y
@@ -76,12 +76,30 @@ The setup and start process of the Docker containers can take a while because a 
 
 When you think that everything is done visit your Nextcloud instance and start the setup process for Nextcloud.
 
+## HTML website
+
+If you want to serve a static HTML website from your server copy your HTML (and JS) files into [html_server/html](html_server/html).
+
+Then when you execute
+
+```
+docker-compose up -d
+```
+
+it will bild a custom nginx server with your website.
+
+If you want to update your website with a new website, remove all old files from [html_server/html](html_server/html) and rebuild the container with
+
+```
+docker-compose up -d --build
+```
+
 ## CREDIT
 
 This repository is a fork from [bohlrich](https://github.com/bohlrich/docker_nextcloud).
-Changes include 
+Changes include
   1. support for two databases `MariaDB` and `PostgreSQL`
-  2. memory limit for containers 
+  2. memory limit for containers
   3. more up to date image versions
 
 ## Links that could be useful

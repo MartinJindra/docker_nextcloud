@@ -94,6 +94,17 @@ services:
     expose:
       - 9980
 
+  html_server:
+    build: ./html_server
+    environment:
+    - "NGINX_HOST=${html_domain}"
+    - "VIRTUAL_HOST=${html_domain}"
+    - "VIRTUAL_PORT=8080"
+    - "LETSENCRYPT_HOST=${html_domain}"
+    - "LETSENCRYPT_EMAIL=$LETSENCRYPT_EMAIL"
+    ports:
+    - "8080:8080"
+
 volumes:
   nginx-proxy-certs:
   nginx-proxy-vhost:

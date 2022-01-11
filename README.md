@@ -88,14 +88,6 @@ Then when you execute
 docker-compose up -d
 ```
 
-it will build a custom nginx container with your website.
-
-If you want to update your website, replace all not needed files from [html_server/html](html_server/html) and rebuild the container with
-
-```
-docker-compose up -d --build
-```
-
 ## CREDIT
 
 This repository is a fork from [bohlrich](https://github.com/bohlrich/docker_nextcloud).

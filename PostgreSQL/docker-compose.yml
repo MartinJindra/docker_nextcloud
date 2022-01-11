@@ -94,11 +94,13 @@ services:
       - 9980
 
   html_server:
-    build: ./html_server
+    image: caddy
+    volumes:
+    - ./html_server/Caddyfile:/etc/caddy/Caddyfile
+    - ./html_server/html:/usr/share/caddy/
     environment:
-    - "NGINX_HOST=${html_domain}"
-    - "VIRTUAL_HOST=${html_domain}"
-    - "VIRTUAL_PORT=8080"
+    - "VIRTUAL_HOST="${html_domain}}"
+    - VIRTUAL_PORT=8080
     - "LETSENCRYPT_HOST=${html_domain}"
     - "LETSENCRYPT_EMAIL=$LETSENCRYPT_EMAIL"
     ports:

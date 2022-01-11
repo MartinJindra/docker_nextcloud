@@ -96,15 +96,15 @@ services:
   html_server:
     image: caddy
     volumes:
-    - ./html_server/Caddyfile:/etc/caddy/Caddyfile
-    - ./html_server/html:/usr/share/caddy/
+      - ./html_server/Caddyfile:/etc/caddy/Caddyfile
+      - ./html_server/html:/usr/share/caddy/
     environment:
-    - "VIRTUAL_HOST="${html_domain}}"
-    - VIRTUAL_PORT=8080
-    - "LETSENCRYPT_HOST=${html_domain}"
-    - "LETSENCRYPT_EMAIL=$LETSENCRYPT_EMAIL"
+      - "VIRTUAL_HOST="${html_domain}"
+      - VIRTUAL_PORT=8080
+      - "LETSENCRYPT_HOST=${html_domain}"
+      - "LETSENCRYPT_EMAIL=$LETSENCRYPT_EMAIL"
     ports:
-    - "8080:8080"
+      - "8080:8080"
 
 volumes:
   nginx-proxy-certs:

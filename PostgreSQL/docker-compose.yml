@@ -2,6 +2,7 @@ version: '2.1'
 services:
 
   nginx-proxy:
+    container_name: nginx-proxy
     image: "nginxproxy/nginx-proxy:$NGINX_PROXY_VERSION"
     mem_limit: "$NGINX_PROXY_MEM_LIMIT"
     volumes:
@@ -18,6 +19,7 @@ services:
       - "com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy"
 
   nginx-letsencrypt:
+    container_name: nginx-letsencrypt
     image: "nginxproxy/acme-companion:$NGINX_LETSENCRYPT_VERSION"
     mem_limit: "$NGINX_LETSENCRYPT_MEM_LIMIT"
     volumes:
@@ -27,6 +29,7 @@ services:
       - nginx-proxy
 
   nc-db:
+    container_name: nc-db
     image: "postgres:$POSTGRES_VERSION"
     restart: always
     mem_limit: "$POSTGRES_MEM_LIMIT"
@@ -38,6 +41,7 @@ services:
       - nc-db-data:/var/lib/postgresql/data
 
   nc-redis:
+    container_name: nc-redis
     image: "redis:$REDIS_VERSION"
     restart: always
     mem_limit: "$REDIS_MEM_LIMIT"
@@ -46,6 +50,7 @@ services:
       - redis:/var/lib/redis
 
   nc:
+    container_name: nc
     image: "nextcloud:$NEXTCLOUD_VERSION"
     restart: always
     mem_limit: "$NEXTCLOUD_MEM_LIMIT"
@@ -75,6 +80,7 @@ services:
       - "REDIS_HOST_PASSWORD=$REDIS_PASSWORD"
 
   nc-collabora:
+    container_name: nc-collabora
     image: "collabora/code:$COLLABORA_VERSION"
     restart: always
     mem_limit: "$COLLABORA_MEM_LIMIT"
@@ -94,6 +100,7 @@ services:
       - 9980
 
   html_server:
+    container_name: html_server
     image: caddy
     volumes:
       - ./html_server/Caddyfile:/etc/caddy/Caddyfile

@@ -83,6 +83,11 @@ services:
     container_name: nc-collabora
     image: "collabora/code:$COLLABORA_VERSION"
     restart: always
+    depends_on:
+      - nc-db
+      - nc-redis
+      - nginx-proxy
+      - nginx-letsencrypt
     mem_limit: "$COLLABORA_MEM_LIMIT"
     environment:
       - "domain=$nextcloud_domain"
@@ -102,6 +107,9 @@ services:
   html_server:
     container_name: html_server
     image: caddy
+    depends_on:
+      - nginx-proxy
+      - nginx-letsencrypt
     volumes:
       - ./html_server/Caddyfile:/etc/caddy/Caddyfile
       - ./html_server/html:/usr/share/caddy/

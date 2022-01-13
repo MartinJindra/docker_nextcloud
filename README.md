@@ -9,7 +9,13 @@ The `docker-compose.yml` files come in two variants.
 
 So choose wisely with database is needed.
 
-## Installation
+## Table of contents
+
++ [Installation of Docker](#installation-of-docker)
++ [Configuration of Nextcloud](#configuration-of-nextcloud)
+  + [HTML website](#html-website)
+
+## Installation of Docker
 
 This installation process was tested on an Ubuntu 20.04 and Debian 11.
 
@@ -37,7 +43,7 @@ For this to take affect, you need to log out and log back in.
 [user@local ~]$ ssh user@server
 ```
 
-## Configuration
+## Configuration of Nextcloud
 
 Clone the repository with `git` and change into it.
 
@@ -59,11 +65,16 @@ Copy the `docker-compose.yml` you want in the root of the repository.
 ```
 [user@server ~/docker_nextcloud]$ cp PostgreSQL/docker-compose.yml docker-compose.yml
 ```
-
 Edit the [.env](.env) file.
 
 1. Replace any `TODO` with secure and strong passwords and any links or domains with your own.
 2. If you need to also edit some other options. For example you should change the variables ending with "MEM_LIMIT". These variables set a memory limit for each container and some machines have more or less RAM so change these accordingly.
+
+## HTML website
+
+If you want to serve a static HTML website from your server copy your .html (and .js) files into [html_server/html](html_server/html).
+
+In [.env](.env) edit the `html_domain` variable with your domain for the website.
 
 And finally start it with `docker-compose`.
 
@@ -75,18 +86,6 @@ Now is the hardest part. WAITING.
 The setup and start process of the Docker containers can take a while because a lot of stuff is taken care of by Docker like setting up the Let's Encrypt certificates.
 
 When you think that everything is done visit your Nextcloud instance and start the setup process for Nextcloud.
-
-## HTML website
-
-If you want to serve a static HTML website from your server copy your .html (and .js) files into [html_server/html](html_server/html).
-
-In [.env](.env) edit the `html_domain` variable with your domain for the website.
-
-Then when you execute
-
-```
-docker-compose up -d
-```
 
 ## CREDIT
 

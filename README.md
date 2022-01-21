@@ -67,14 +67,13 @@ Copy the `docker-compose.yml` you want in the root of the repository.
 ```
 Edit the [.env](.env) file.
 
-1. Replace any `TODO` with secure and strong passwords and any links or domains with your own.
-2. If you need to also edit some other options. For example you should change the variables ending with "MEM_LIMIT". These variables set a memory limit for each container and some machines have more or less RAM so change these accordingly.
+Replace any `TODO` with secure and strong passwords and any links or domains with your own.
 
 ## HTML website
 
 If you want to serve a static HTML website from your server copy your .html (and .js) files into [html_server/html](html_server/html).
 
-In [.env](.env) edit the `html_domain` variable with your domain for the website.
+In [.env](.env) edit the `DOMAIN` variable with your domain for the website.
 
 And finally start it with `docker-compose`.
 

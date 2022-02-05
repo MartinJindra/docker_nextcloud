@@ -13,6 +13,8 @@ So choose wisely with database is needed.
 
 + [Installation of Docker](#installation-of-docker)
 + [Configuration of Nextcloud](#configuration-of-nextcloud)
+  + [MariaDB](#mariadb)
+  + [PostgreSQL](#postgresql)
   + [HTML website](#html-website)
 
 ## Installation of Docker
@@ -54,13 +56,13 @@ Clone the repository with `git` and change into it.
 
 Copy the `docker-compose.yml` you want in the root of the repository.
 
-**MariaDB**
+### MariaDB
 
 ```
 [user@server ~/docker_nextcloud]$ cp MariaDB/docker-compose.yml docker-compose.yml
 ```
 
-**PostgreSQL**
+### PostgreSQL
 
 ```
 [user@server ~/docker_nextcloud]$ cp PostgreSQL/docker-compose.yml docker-compose.yml
@@ -69,13 +71,13 @@ Edit the [.env](.env) file.
 
 Replace any `TODO` with secure and strong passwords and any links or domains with your own.
 
-## HTML website
+### HTML website
 
 If you want to serve a static HTML website from your server copy your .html (and .js) files into [html_server/html](html_server/html).
 
 In [.env](.env) edit the `DOMAIN` variable with your domain for the website.
 
-And finally start it with `docker-compose`.
+If you haven't started the containers yet do it with `docker-compose`.
 
 ```
 [user@server ~/docker_nextcloud]$ docker-compose up -d
